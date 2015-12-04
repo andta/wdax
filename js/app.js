@@ -1,11 +1,13 @@
-var andta = { //类似静态方法
-	backwebview: function() {
-		/*关闭network_none页面*/
-		var subWebview = plus.webview.getWebviewById("network_none");
-		subWebview.close();
-	},
-	networkif: function() {
-		/*判断网络*/
+var wd = (function(mod) {
+	/*关闭network_none页面*/
+	mod.backwebview = function() {
+		mui.plusReady(function() {
+			var subWebview = plus.webview.getWebviewById("network_none");
+			subWebview.close();
+		});
+	};
+	/*判断网络*/
+	mod.networkif = function() {
 		var net = plus.networkinfo.getCurrentType();
 		var netcn = null;
 		switch (net) {
@@ -37,9 +39,10 @@ var andta = { //类似静态方法
 			//网络畅通关闭本界面
 			andta.backwebview();
 		}
-	},
-	createwebnone: function() {
-		/*预加载无网络页面*/
+	};
+	/*预加载无网络页面*/
+	mod.createwebnone = function() {
+
 		var subWeb = mui.preload({
 			url: 'network_none.html',
 			id: "network_none",
@@ -55,20 +58,9 @@ var andta = { //类似静态方法
 		var tempweb = plus.webview.getWebviewById("default-main");
 		tempweb.append(subWeb);
 		console.log('调试：打开无网络界面，子窗体个数 = ' + tempweb.children().length);
-	},
-	newweb: function() {
-
-	}
-}
-
-
-
-
-
-
-
-
-
+	};　　
+	return mod;
+})(window.wd || {});
 
 
 
