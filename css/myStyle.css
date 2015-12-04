@@ -1,0 +1,127 @@
+/*重写Mui样式*/
+
+
+/*---------------------------------------------------------------------*/
+
+
+/*标题背景颜色*/
+
+.mui-bar {
+	background-color: #57AF72;
+}
+
+
+/*右图标颜色*/
+
+.mui-title {
+	color: #ffffff;
+}
+
+
+/*重写列表低边框右侧没有缩进问题*/
+
+.mui-table-view-cell:after {
+	right: 15px;
+}
+
+
+/*重写阿里字体图标居中*/
+
+.iconfont-juzhong {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+/*---------------------------------------------------------------------*/
+
+
+/*自定义样式*/
+
+
+/*---------------------------------------------------------------------*/
+
+.my-css-fonts {}
+
+
+/*白色*/
+
+.my-css-color {
+	color: #ffffff;
+}
+
+
+/*标题字体*/
+
+.my-css-bt-color {
+	color: #3B3838;
+}
+
+
+/*收藏，阅读，评论样式*/
+
+.my-css-xx-font {
+	color: #84a9e0;
+}
+
+.my-css-tb-font {
+	font-size: 12px;
+}
+
+
+/*底部加载动画*/
+
+.list_loading {
+	height: 16px;
+	padding: 20px 0 40px;
+	text-align: center;
+}
+
+.list_loading span {
+	height: 16px;
+	display: inline-block;
+	line-height: 16px;
+	vertical-align: middle;
+	color: #A0A0A0;
+	font-family: "arial", "微软雅黑";
+	color: #535353;
+	font-size: 14px;
+}
+
+.list_loading i {
+	height: 16px;
+	width: 16px;
+	display: inline-block;
+	background: url('icons.png') no-repeat -288px -16px;
+	background-size: 500px 500px;
+	margin-right: 10px;
+	vertical-align: middle;
+	-webkit-animation: loading 1s infinite linear;
+	-ms-animation: loading 1s infinite linear;
+	-o-animation: loading 1s infinite linear;
+	-moz-animation: loading 1s infinite linear;
+	animation: loading 1s infinite linear;
+}
+
+@-webkit-keyframes loading {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes loading {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+/*-详细----------------*/

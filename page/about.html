@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<!--<link rel="stylesheet" type="text/css" href="../css/app.css"/>-->
+		<style>
+			p {
+				text-indent: 22px;
+				padding: 5px 8px;
+			}
+			
+			h4 {
+				margin-left: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<!--内容区域-->
+		</div>
+	</body>
+	<!------------------------------------------->
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/app.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		var outtime = 100000; //超时
+		var url = 'http://192.168.1.83/Mobile/AboutInfo'; //loio.wicp.net
+		/*
+		 * 初始化Mui
+		 */
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		mui.plusReady(function() {
+			var cells = document.body.querySelectorAll('.mui-content');
+			console.log('调试：关于页面是否包含内容 = ' + cells.length);
+			if (plus.networkinfo.getCurrentType() == 1) {
+				andta.createwebnone();
+			} else {
+				ajax(); //执行请求							
+			}
+		});
+		//监听自定义事件
+		window.addEventListener("LoadingData", function(e) {
+			var title = e.detail.title;
+			ajax(); //执行请求	
+		});
+		//处理点击事件，需要打开原生浏览器
+		mui('body').on('tap', 'a', function(e) {
+			var href = this.getAttribute('href');
+			if (href) {
+				if (window.plus) {
+					console.log('调试：调用打开设备浏览器！');
+					plus.runtime.openURL(href);
+				} else {
+					location.href = href;
+				}
+			}
+		});
+		/* 
+		 * 关于页面的ajax拉取
+		 */
+		var ajax = function() {
+			//功能测试url
+			//发送数据
+			var data = {};
+			//Get方式请求html
+			mui.ajax(url, {
+				data: data,
+				type: 'get',
+				timeout: outtime,
+				success: success,
+				dataType: 'html',
+				error: throwGeterror
+			});
+		};
+		/*
+		 * 成功响应的回调函数
+		 */
+		var count = 0;
+		var success = function(response) {
+			//获取Div元素
+			var table = document.body.querySelector('.mui-content');
+			//ajax拉取得html片段 response
+			console.log('调试：ajax返回数据字节 = ' + response.length);
+			//插入代码片段 在 element 元素的最后一个子元素后面。
+			table.insertAdjacentHTML('beforeend', response);
+			//加载完成显示
+			var template = plus.webview.getWebviewById("default-main"); //获取共用父窗体				
+			var subWebview = template.children()[0];
+			subWebview.show();
+		};
+		//异常处理函数
+		var throwGeterror = function(xhr, type, errorThrown) {
+			//异常处理；
+			console.log('调试：异常信息 = ' + type);
+			if (type === 'timeout') {
+			}
+			switch (type) {
+				case "timeout":
+					mui.toast("抱歉，链接服务器超时！");
+					break;
+				default:
+					mui.toast("抱歉，发生其他错误！");
+					break;
+			}
+		};
+	</script>
+
+</html>
