@@ -3,7 +3,10 @@ var wd = (function(mod) {
 	mod.backwebview = function() {
 		mui.plusReady(function() {
 			var subWebview = plus.webview.getWebviewById("network_none");
-			subWebview.close();
+			if (subWebview)
+			{
+				subWebview.close();
+			}
 		});
 	};
 	/*判断网络*/

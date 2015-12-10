@@ -1,4 +1,4 @@
-﻿{
+{
     "@platforms": ["android", "iPhone", "iPad"],
     "id": "H5B5088FD",/*应用的标识，创建应用时自动生成，勿手动修改*/
     "name": "微读爱享",/*应用名称，程序桌面图标名称*/
@@ -200,5 +200,96 @@
                 }
             }
         }
-    }
+    },
+	"dependencies": {
+		"pages": {
+			"page/main.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/iconfont.css",
+					"css/myStyle.css",
+					"css/mui.min.css",
+					"js/seajs/sea.js",
+					"js/view/main.js",
+					"page/main_list.html",
+					"js/immersed.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/template.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/myStyle.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/main_list.html": {
+				"resources": [
+					"js/view/main_list.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/iconfont.css",
+					"css/myStyle.css",
+					"css/mui.min.css",
+					"js/bmob/bmob-min.js",
+					"js/seajs/sea.js",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"page/template.html",
+					"page/about.html",
+					"page/details.html"
+				],
+				"priority": 0
+			},
+			"page/about.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/bmob/bmob-min.js",
+					"js/view/about.js",
+					"js/seajs/sea.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/details.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"css/iconfont.css",
+					"css/myStyle.css",
+					"css/mui.min.css",
+					"js/bmob/bmob-min.js",
+					"js/seajs/sea.js",
+					"js/view/details.js"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"js/bmob/bmobSocketIo.js",
+				"css/mui.css",
+				"js/seajs/sea-debug.js",
+				"js/bmob/bmob.js",
+				"css/icons.png",
+				"index.html",
+				"wwdd.html",
+				"js/mui.js",
+				"js/bmob/bmobSocketIo-min.js",
+				"page/network_none.html"
+			]
+		}
+	}
 }
