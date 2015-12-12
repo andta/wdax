@@ -1494,6 +1494,7 @@
     var handled = false;
 
     var xhr = new Bmob.XMLHttpRequest();
+ 
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
         if (handled) {

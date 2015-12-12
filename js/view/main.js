@@ -1,9 +1,14 @@
 // 所有模块都通过 define 来定义
 define(function(require, exports, module) {
-	//var mui = require('./mui.min');
-	/*
+	/**
 	 * 初始化Mui,启用双击监听,预加载sub子页
 	 */
+	var subtop = '45px';
+	var t = document.getElementById('header');
+	if(t.offsetHeight>44){
+		subtop = '70px';	
+	};
+	
 	mui.init({
 		gestureConfig: {
 			doubletap: true
@@ -12,12 +17,18 @@ define(function(require, exports, module) {
 			url: 'main_list.html',
 			id: 'main_list',
 			styles: {
-				top: '45px',
+				top: subtop,
 				bottom: '0px',
-			}
+			},
+		    extras: {
+		        headertop:subtop
+		    }
 		}]
 	});
 	mui.plusReady(function() {
+		plus.navigator.setFullscreen(false);
+
+
 		/*
 		// 设置应用非全屏显示！
 		plus.navigator.setFullscreen(false); - 获取当前系统状态栏高度
@@ -70,7 +81,7 @@ define(function(require, exports, module) {
 	 * 程序退出事件
 	 */
 	mui.back = function() {
-		mui.confirm("确认退出？", function(e) {
+		plus.nativeUI.confirm("确认退出？", function(e) {
 			if (e.index == 0) {
 				plus.runtime.quit();
 				console.log('调试：点击了退出按钮！');

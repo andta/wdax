@@ -71,7 +71,7 @@ define(function(require, exports, module) {
 		query.ascending("db_key"); //升序排列
 		query.skip(cells.length); // 开始查询条数
 		query.limit(tcount); // 每次查询返回最多10条数据				
-		//查询数据
+		//查询数据	
 		query.find({
 			success: success,
 			error: throwerror
@@ -142,6 +142,8 @@ define(function(require, exports, module) {
 	 */
 	var templates = {};
 	var getTemplate = function(name, header, content) {
+		//获取标题栏高度
+		var headertop = plus.webview.currentWebview().headertop;
 		var template = templates[name];
 		if (!template) {
 			//预加载共用父模板；
@@ -160,7 +162,7 @@ define(function(require, exports, module) {
 				url: !content ? "" : content,
 				id: name + "-sub",
 				styles: {
-					top: '45px',
+					top: headertop,
 					bottom: '0px',
 				},
 				extras: {

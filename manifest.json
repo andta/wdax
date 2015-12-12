@@ -4,7 +4,7 @@
     "name": "微读爱享",/*应用名称，程序桌面图标名称*/
     "version": {
         "name": "1.0",/*应用版本名称*/
-        "code": ""
+        "code": "10"
     },
     "description": "",/*应用描述信息*/
     "icons": {
@@ -23,9 +23,7 @@
         "Audio": {
             "description": "访问麦克风"
         },
-        "Messaging":{
-        	"description": "短彩邮件插件"
-        },
+        
         "Cache": {
             "description": "管理应用缓存"
         },
@@ -101,7 +99,7 @@
         },
         "NativeObj":{
         	"description": "原生对象"
-        }
+        },"Statistic":{}
     },
     "plus": {
         "splashscreen": {
@@ -111,7 +109,7 @@
         "popGesture": "close",/*设置应用默认侧滑返回关闭Webview窗口，"none"为无侧滑返回功能，"hide"为侧滑隐藏Webview窗口。参考http://ask.dcloud.net.cn/article/102*/
         "runmode": "normal",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
         "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
-        "distribute": {
+        "distribute": {"plugins":{"statics":{"umeng":{"appkey_ios":"566bdcf667e58e9681005dbc","channelid_ios":"wdax","appkey_android":"566bdd34e0f55a53f20059a2","channelid_android":"wdax"}}},
             "apple": {
                 "appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
                 "mobileprovision": "",/*iOS应用打包配置文件*/
@@ -126,8 +124,8 @@
                 "keystore": "",/*Android应用打包使用的密钥库文件*/
                 "password": "",/*Android应用打包使用密钥库中证书的密码*/
                 "aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
-               	"ImmersedStatusbar":false,/*Android平台设置沉浸式状态栏显示效果true*/
-               "permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"]
+               	"ImmersedStatusbar":true,/*Android平台设置沉浸式状态栏显示效果true*/
+               "permissions": ["<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
 				/*使用Native.js调用原生安卓API需要使用到的系统权限*/
             },
             "orientation": [
@@ -201,6 +199,97 @@
             }
         }
     },
+	"dependencies": {
+		"pages": {
+			"page/main.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/iconfont.css",
+					"css/myStyle.css",
+					"css/mui.min.css",
+					"js/seajs/sea.js",
+					"js/view/main.js",
+					"page/main_list.html",
+					"js/immersed.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/template.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/myStyle.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/main_list.html": {
+				"resources": [
+					"js/view/main_list.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/iconfont.css",
+					"css/myStyle.css",
+					"css/mui.min.css",
+					"js/bmob/bmob-min.js",
+					"js/seajs/sea.js",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"page/template.html",
+					"page/about.html",
+					"page/details.html"
+				],
+				"priority": 0
+			},
+			"page/about.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/bmob/bmob-min.js",
+					"js/view/about.js",
+					"js/seajs/sea.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/details.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"css/iconfont.css",
+					"css/myStyle.css",
+					"css/mui.min.css",
+					"js/bmob/bmob-min.js",
+					"js/seajs/sea.js",
+					"js/view/details.js"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"js/bmob/bmobSocketIo.js",
+				"css/mui.css",
+				"js/seajs/sea-debug.js",
+				"js/bmob/bmob.js",
+				"css/icons.png",
+				"index.html",
+				"wwdd.html",
+				"js/mui.js",
+				"js/bmob/bmobSocketIo-min.js",
+				"page/network_none.html"
+			]
+		}
+	},"fullscreen":false,
 	"dependencies": {
 		"pages": {
 			"page/main.html": {

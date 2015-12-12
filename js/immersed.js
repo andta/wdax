@@ -15,8 +15,7 @@
 	}
 	//增加标题栏高度以及设置paddingTop
 	var t = document.getElementById('header');
-	t && (t.style.height = (t.offsetHeight + immersed) + 'px',t.style.paddingTop = immersed + 'px');
+	t && (t.style.height = (t.offsetHeight + immersed) + 'px', t.style.paddingTop = immersed + 'px');
 	t = document.getElementById('content');
 	t && (t.style.marginTop = immersed + 'px');
-
 })(window);
