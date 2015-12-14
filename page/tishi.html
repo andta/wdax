@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#nav {
+				width: auto;
+				height: 25px;
+				border: 1px solid #2AC845;
+				position: fixed;
+				top: 0;
+				left: 0px;
+				right: 0px;
+				z-index: 11;
+				padding-right: 10px;
+				padding-left: 10px;
+				font-size: 12px;
+				background-color: #4CD964;
+				color: #FFFFFF;
+				text-align: center;
+				opacity: 0.5;
+				line-height: 25px;
+				/*设置文字行距等于div的高度*/
+			}
+		</style>
+	</head>
+
+	<body style="background-color:transparent; background: transparent;">
+		<div id="nav" class="mui-scroll-wrapper">已经是最新了</div>
+	</body>
+		<!------------------------------------------->
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script>
+		mui.plusReady(function() {
+			setTimeout(function() {
+				this.close();
+				console.log("111111111");
+			}, 3000);
+		});
+	</script>
+
+</html>

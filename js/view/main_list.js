@@ -191,10 +191,12 @@ define(function(require, exports, module) {
 		getTemplate('default', 'template.html');
 	};
 	mui.plusReady(function() {
+		// 隐藏滚动条
+		plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
 		//延迟的原因：优先打开启动导航页面，避免资源争夺
 		setTimeout(function() {
 			//初始化模板
 			initTemplates();
-		}, 200);
+		}, 10);
 	});
 });
