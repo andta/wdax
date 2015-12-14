@@ -33,27 +33,28 @@
 
 		<script>
 			seajs.use("../js/view/main")
+			
+			
 			mui.plusReady(function() {
 				mui.preload({
 					url: "tishi.html",
 					id: "tishi",
 					styles: {
-						top: '58px',
+						top: '50px',
 						left: '8px',
-						right: '8px',				
-						height: '25px'	
-					}, 
+						right: '8px',
+						opacity: '0.8', //透明度
+						height: '27px'
+					},
 					extras: {} //自定义扩展参数
 				});
 			});
-
 			function clicklist() { //list点击item后的事件
-				var webviewShow = plus.webview.getWebviewById("tishi");
-				if (webviewShow.isVisible()) {
-					webviewShow.hide();
-				} else {
-					webviewShow.show();
-				}
+				var tishiwebview = plus.webview.getWebviewById("tishi");				
+				mui.fire(tishiwebview, 'updatetishi', { //修改共用父模板的标题
+					tishi: '1'
+				});
+				tishiwebview.show('fade-in', 400);
 			}
 		</script>
 	</body>

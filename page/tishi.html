@@ -9,6 +9,8 @@
 				width: auto;
 				height: 25px;
 				border: 1px solid #2AC845;
+				border-radius: 2px;
+				/*圆角*/
 				position: fixed;
 				top: 0;
 				left: 0px;
@@ -20,23 +22,25 @@
 				background-color: #4CD964;
 				color: #FFFFFF;
 				text-align: center;
-				opacity: 0.5;
 				line-height: 25px;
 				/*设置文字行距等于div的高度*/
 			}
 		</style>
 	</head>
 
-	<body style="background-color:transparent; background: transparent;">
+	<body>
 		<div id="nav" class="mui-scroll-wrapper">已经是最新了</div>
 	</body>
-		<!------------------------------------------->
-		<script type="text/javascript" src="../js/mui.min.js"></script>
+	<!------------------------------------------->
+	<script type="text/javascript" src="../js/mui.min.js"></script>
 	<script>
-		mui.plusReady(function() {
+		//监听自定义事件
+		window.addEventListener("updatetishi", function(e) {
+			var tishi = e.detail.tishi;
+			var tsdiv = document.getElementById('nav');
+			tsdiv.innerHTML = "为您更新了" + tishi + "条内容";
 			setTimeout(function() {
-				this.close();
-				console.log("111111111");
+				plus.webview.currentWebview().hide('zoom-in', 400);
 			}, 3000);
 		});
 	</script>
