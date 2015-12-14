@@ -1,14 +1,14 @@
 // 所有模块都通过 define 来定义
 define(function(require, exports, module) {
+	//当沉浸式时，subtop顶部高度动态设置
+	var subtop = '45px';
+	var t = document.getElementById('header');
+	if (t.offsetHeight > 44) {
+		subtop = '70px';
+	};
 	/**
 	 * 初始化Mui,启用双击监听,预加载sub子页
 	 */
-	var subtop = '45px';
-	var t = document.getElementById('header');
-	if(t.offsetHeight>44){
-		subtop = '70px';	
-	};
-	
 	mui.init({
 		gestureConfig: {
 			doubletap: true
@@ -20,36 +20,17 @@ define(function(require, exports, module) {
 				top: subtop,
 				bottom: '0px',
 			},
-		    extras: {
-		        headertop:subtop
-		    }
+			extras: {
+				headertop: subtop//向子页面传值
+			}
 		}]
 	});
 	mui.plusReady(function() {
-		plus.navigator.setFullscreen(false);
-
-
-		/*
 		// 设置应用非全屏显示！
-		plus.navigator.setFullscreen(false); - 获取当前系统状态栏高度
-		var heightzt = plus.navigator.getStatusbarHeight();
-		// 创建加载内容窗口
-		var topoffset = '45px';
-		if (plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
-			// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
-			topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
-		}
-		// 使用偏移位置创建子窗口
-		wc = plus.webview.create(null, 'doccontent', {
-			top: topoffset,
-			bottom: '0px',
-			bounce: 'vertical',
-			bounceBackground: '#FFFFFF'
-		});
-		*/
+		plus.navigator.setFullscreen(false); //获取当前系统状态栏高度
 	});
 	/*
-	 * ????
+	 * 监听表头双击，返回顶部！
 	 */
 	var contentWebview = null;
 	document.querySelector('header').addEventListener('doubletap', function() {

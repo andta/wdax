@@ -142,7 +142,7 @@ define(function(require, exports, module) {
 	 */
 	var templates = {};
 	var getTemplate = function(name, header, content) {
-		//获取标题栏高度
+		//获取父页面标题栏高度，用于动态修改顶部高度！
 		var headertop = plus.webview.currentWebview().headertop;
 		var template = templates[name];
 		if (!template) {
